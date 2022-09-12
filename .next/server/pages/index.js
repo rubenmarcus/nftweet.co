@@ -1,0 +1,56 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "pages/index";
+exports.ids = ["pages/index"];
+exports.modules = {
+
+/***/ "./pages/index.tsx":
+/*!*************************!*\
+  !*** ./pages/index.tsx ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"getServerSideProps\": () => (/* binding */ getServerSideProps)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _services_fetchTwitterPosts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/fetchTwitterPosts */ \"./services/fetchTwitterPosts.tsx\");\n\n\nfunction Minter({ media , posts  }) {\n    console.log(\"media\", media);\n    console.log(\"posts\", posts);\n    const tweets = posts.filter((post)=>{\n        return post.attachments?.media_keys?.length > 0;\n    });\n    console.log(tweets, \"tweets\");\n    // console.log(tweets(false),  'screenshot Tweets')\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"flex flex-1 flex-col min-h-screen text-gray-500\"\n    }, void 0, false, {\n        fileName: \"/Users/rubenmarcus/hackaton/pages/index.tsx\",\n        lineNumber: 23,\n        columnNumber: 5\n    }, this);\n}\nconst getServerSideProps = async ({ res , req , query  })=>{\n    const { posts  } = await (0,_services_fetchTwitterPosts__WEBPACK_IMPORTED_MODULE_1__.fetchTwitterPosts)(\"mintbase\");\n    console.log(posts, \"posts\");\n    return {\n        props: {\n            media: posts.includes.media,\n            posts: posts.data\n        }\n    };\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Minter);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC50c3guanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQTtBQUlrRTtBQUVsRSxTQUFTQyxNQUFNLENBQUMsRUFBQ0MsS0FBSyxHQUFFQyxLQUFLLEdBQUssRUFBZTtJQUUvQ0MsT0FBTyxDQUFDQyxHQUFHLENBQUMsT0FBTyxFQUFFSCxLQUFLLENBQUM7SUFDM0JFLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDLE9BQU8sRUFBRUYsS0FBSyxDQUFDO0lBRTNCLE1BQU1HLE1BQU0sR0FBR0gsS0FBSyxDQUFDSSxNQUFNLENBQUMsQ0FBQ0MsSUFBUSxHQUFLO1FBQ3hDLE9BQU9BLElBQUksQ0FBQ0MsV0FBVyxFQUFFQyxVQUFVLEVBQUVDLE1BQU0sR0FBRyxDQUFDLENBQUM7S0FDaEQsQ0FBQztJQUlMUCxPQUFPLENBQUNDLEdBQUcsQ0FBQ0MsTUFBTSxFQUFHLFFBQVEsQ0FBQztJQUM5QixtREFBbUQ7SUFHakQscUJBQ0UsOERBQUNNLEtBQUc7UUFBQ0MsU0FBUyxFQUFDLGlEQUFpRDs7Ozs7WUFRMUQsQ0FDTjtDQUNIO0FBRU0sTUFBTUMsa0JBQWtCLEdBQUcsT0FBTyxFQUN2Q0MsR0FBRyxHQUNIQyxHQUFHLEdBQ0hDLEtBQUssR0FDcUIsR0FBSztJQUcvQixNQUFNLEVBQUVkLEtBQUssR0FBRSxHQUFHLE1BQU1ILDhFQUFpQixDQUFDLFVBQVUsQ0FBQztJQUVyREksT0FBTyxDQUFDQyxHQUFHLENBQUNGLEtBQUssRUFBRSxPQUFPLENBQUM7SUFFM0IsT0FBTztRQUNMZSxLQUFLLEVBQUU7WUFBQ2hCLEtBQUssRUFBRUMsS0FBSyxDQUFDZ0IsUUFBUSxDQUFDakIsS0FBSztZQUFFQyxLQUFLLEVBQUVBLEtBQUssQ0FBQ2lCLElBQUk7U0FBQztLQUN4RDtDQUNGO0FBR0QsaUVBQWVuQixNQUFNLEVBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9taW50YmFzZS1leGFtcGxlcy1zaW1wbGUtbWludGVyLy4vcGFnZXMvaW5kZXgudHN4PzA3ZmYiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgR2V0U2VydmVyU2lkZVByb3BzQ29udGV4dCB9IGZyb20gJ25leHQnO1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi4vY29tcG9uZW50cy9IZWFkZXInO1xuaW1wb3J0IE1haW4gZnJvbSAnLi4vY29tcG9uZW50cy9NYWluJztcbmltcG9ydCB7IGZldGNoVHdpdHRlclBvc3RzIH0gZnJvbSAnLi4vc2VydmljZXMvZmV0Y2hUd2l0dGVyUG9zdHMnO1xuXG5mdW5jdGlvbiBNaW50ZXIoe21lZGlhLCBwb3N0c306YW55KTogSlNYLkVsZW1lbnQge1xuXG4gIGNvbnNvbGUubG9nKCdtZWRpYScsIG1lZGlhKVxuICBjb25zb2xlLmxvZygncG9zdHMnLCBwb3N0cylcblxuICBjb25zdCB0d2VldHMgPSBwb3N0cy5maWx0ZXIoKHBvc3Q6YW55KSA9PiB7IFxuICAgIHJldHVybiBwb3N0LmF0dGFjaG1lbnRzPy5tZWRpYV9rZXlzPy5sZW5ndGggPiAwO1xuICAgfSlcblxuXG5cbmNvbnNvbGUubG9nKHR3ZWV0cywgICd0d2VldHMnKVxuLy8gY29uc29sZS5sb2codHdlZXRzKGZhbHNlKSwgICdzY3JlZW5zaG90IFR3ZWV0cycpXG5cblxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBmbGV4LTEgZmxleC1jb2wgbWluLWgtc2NyZWVuIHRleHQtZ3JheS01MDBcIj5cbiAgICAgIHsvKiA8SGVhZD5cbiAgICAgICAgPHRpdGxlPk1pbnRiYXNlIC0gU2ltcGxlIE1pbnRlciBFeGFtcGxlPC90aXRsZT5cbiAgICAgIDwvSGVhZD5cbiAgICAgIDxIZWFkZXIgLz5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwibXgtNiBzbTpteC0yNCBtdC00IG1iLTRcIj5cbiAgICAgICAgPE1haW4gLz5cbiAgICAgIDwvZGl2PiAqL31cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZXhwb3J0IGNvbnN0IGdldFNlcnZlclNpZGVQcm9wcyA9IGFzeW5jICh7XG4gIHJlcyxcbiAgcmVxLFxuICBxdWVyeSxcbn06IEdldFNlcnZlclNpZGVQcm9wc0NvbnRleHQpID0+IHtcbiBcblxuICBjb25zdCB7IHBvc3RzIH0gPSBhd2FpdCBmZXRjaFR3aXR0ZXJQb3N0cygnbWludGJhc2UnKTtcblxuICBjb25zb2xlLmxvZyhwb3N0cywgJ3Bvc3RzJylcblxuICByZXR1cm4ge1xuICAgIHByb3BzOiB7bWVkaWE6IHBvc3RzLmluY2x1ZGVzLm1lZGlhLCBwb3N0czogcG9zdHMuZGF0YX0sXG4gIH1cbn1cblxuXG5leHBvcnQgZGVmYXVsdCBNaW50ZXI7XG4iXSwibmFtZXMiOlsiZmV0Y2hUd2l0dGVyUG9zdHMiLCJNaW50ZXIiLCJtZWRpYSIsInBvc3RzIiwiY29uc29sZSIsImxvZyIsInR3ZWV0cyIsImZpbHRlciIsInBvc3QiLCJhdHRhY2htZW50cyIsIm1lZGlhX2tleXMiLCJsZW5ndGgiLCJkaXYiLCJjbGFzc05hbWUiLCJnZXRTZXJ2ZXJTaWRlUHJvcHMiLCJyZXMiLCJyZXEiLCJxdWVyeSIsInByb3BzIiwiaW5jbHVkZXMiLCJkYXRhIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./pages/index.tsx\n");
+
+/***/ }),
+
+/***/ "./services/fetchTwitterPosts.tsx":
+/*!****************************************!*\
+  !*** ./services/fetchTwitterPosts.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchTwitterPosts\": () => (/* binding */ fetchTwitterPosts),\n/* harmony export */   \"fetchTwitterScreenShot\": () => (/* binding */ fetchTwitterScreenShot)\n/* harmony export */ });\nconst fetchTwitterPosts = async (hashtag)=>{\n    const TWITTER_URL = `https://api.twitter.com/2/tweets/search/recent?query=${hashtag}&tweet.fields=created_at&max_results=100&expansions=attachments.media_keys&media.fields=preview_image_url,url`;\n    const headers = {\n        authorization: \"Bearer AAAAAAAAAAAAAAAAAAAAABT%2BgwEAAAAA02t%2B49JW8tjqDzdNICYGr%2Ft7FZw%3DXaxrIEwumZJuI4PzagmpuxvItU4xzsYxTVrx76DWaw8f6K79Gb\"\n    };\n    const fetchPosts = await (await fetch(TWITTER_URL, {\n        headers\n    })).json();\n    return {\n        posts: fetchPosts\n    };\n};\nconst fetchTwitterScreenShot = async (tweetId)=>{\n    const fetchScreenshots = await (await fetch(\"https://tweetpik.com/api/images\", {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n            authorization: \"4323d110-15dc-47b4-8e8e-3340deb37550\"\n        },\n        body: JSON.stringify({\n            tweetId: tweetId\n        })\n    })).json();\n    return {\n        screenshots: fetchScreenshots\n    };\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zZXJ2aWNlcy9mZXRjaFR3aXR0ZXJQb3N0cy50c3guanMiLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBTyxNQUFNQSxpQkFBaUIsR0FBRyxPQUFPQyxPQUFlLEdBQUs7SUFDMUQsTUFBTUMsV0FBVyxHQUFHLENBQUMscURBQXFELEVBQUVELE9BQU8sQ0FBQyw2R0FBNkcsQ0FBQztJQUNsTSxNQUFNRSxPQUFPLEdBQUc7UUFDZEMsYUFBYSxFQUNYLCtIQUErSDtLQUNsSTtJQUVELE1BQU1DLFVBQVUsR0FBRyxNQUFNLENBQUMsTUFBTUMsS0FBSyxDQUFDSixXQUFXLEVBQUU7UUFBRUMsT0FBTztLQUFFLENBQUMsQ0FBQyxDQUFDSSxJQUFJLEVBQUU7SUFFdkUsT0FBTztRQUFFQyxLQUFLLEVBQUVILFVBQVU7S0FBRTtDQUM3QjtBQUVNLE1BQU1JLHNCQUFzQixHQUFHLE9BQU9DLE9BQWUsR0FBSztJQUMvRCxNQUFNQyxnQkFBZ0IsR0FBRyxNQUFNLENBQzdCLE1BQU1MLEtBQUssQ0FBQyxpQ0FBaUMsRUFBRTtRQUM3Q00sTUFBTSxFQUFFLE1BQU07UUFDZFQsT0FBTyxFQUFFO1lBQ1AsY0FBYyxFQUFFLGtCQUFrQjtZQUNsQ0MsYUFBYSxFQUFFLHNDQUFzQztTQUN0RDtRQUNEUyxJQUFJLEVBQUVDLElBQUksQ0FBQ0MsU0FBUyxDQUFDO1lBQ25CTCxPQUFPLEVBQUVBLE9BQU87U0FDakIsQ0FBQztLQUNILENBQUMsQ0FDSCxDQUFDSCxJQUFJLEVBQUU7SUFFUixPQUFPO1FBQUVTLFdBQVcsRUFBRUwsZ0JBQWdCO0tBQUU7Q0FDekMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9taW50YmFzZS1leGFtcGxlcy1zaW1wbGUtbWludGVyLy4vc2VydmljZXMvZmV0Y2hUd2l0dGVyUG9zdHMudHN4P2YxZDUiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNvbnN0IGZldGNoVHdpdHRlclBvc3RzID0gYXN5bmMgKGhhc2h0YWc6IHN0cmluZykgPT4ge1xuICBjb25zdCBUV0lUVEVSX1VSTCA9IGBodHRwczovL2FwaS50d2l0dGVyLmNvbS8yL3R3ZWV0cy9zZWFyY2gvcmVjZW50P3F1ZXJ5PSR7aGFzaHRhZ30mdHdlZXQuZmllbGRzPWNyZWF0ZWRfYXQmbWF4X3Jlc3VsdHM9MTAwJmV4cGFuc2lvbnM9YXR0YWNobWVudHMubWVkaWFfa2V5cyZtZWRpYS5maWVsZHM9cHJldmlld19pbWFnZV91cmwsdXJsYFxuICBjb25zdCBoZWFkZXJzID0ge1xuICAgIGF1dGhvcml6YXRpb246XG4gICAgICBcIkJlYXJlciBBQUFBQUFBQUFBQUFBQUFBQUFBQUFCVCUyQmd3RUFBQUFBMDJ0JTJCNDlKVzh0anFEemROSUNZR3IlMkZ0N0ZadyUzRFhheHJJRXd1bVpKdUk0UHphZ21wdXh2SXRVNHh6c1l4VFZyeDc2RFdhdzhmNks3OUdiXCIsXG4gIH1cblxuICBjb25zdCBmZXRjaFBvc3RzID0gYXdhaXQgKGF3YWl0IGZldGNoKFRXSVRURVJfVVJMLCB7IGhlYWRlcnMgfSkpLmpzb24oKVxuXG4gIHJldHVybiB7IHBvc3RzOiBmZXRjaFBvc3RzIH1cbn1cblxuZXhwb3J0IGNvbnN0IGZldGNoVHdpdHRlclNjcmVlblNob3QgPSBhc3luYyAodHdlZXRJZDogc3RyaW5nKSA9PiB7XG4gIGNvbnN0IGZldGNoU2NyZWVuc2hvdHMgPSBhd2FpdCAoXG4gICAgYXdhaXQgZmV0Y2goXCJodHRwczovL3R3ZWV0cGlrLmNvbS9hcGkvaW1hZ2VzXCIsIHtcbiAgICAgIG1ldGhvZDogXCJQT1NUXCIsXG4gICAgICBoZWFkZXJzOiB7XG4gICAgICAgIFwiQ29udGVudC1UeXBlXCI6IFwiYXBwbGljYXRpb24vanNvblwiLFxuICAgICAgICBhdXRob3JpemF0aW9uOiBcIjQzMjNkMTEwLTE1ZGMtNDdiNC04ZThlLTMzNDBkZWIzNzU1MFwiLFxuICAgICAgfSxcbiAgICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KHtcbiAgICAgICAgdHdlZXRJZDogdHdlZXRJZCxcbiAgICAgIH0pLFxuICAgIH0pXG4gICkuanNvbigpXG5cbiAgcmV0dXJuIHsgc2NyZWVuc2hvdHM6IGZldGNoU2NyZWVuc2hvdHMgfVxufVxuIl0sIm5hbWVzIjpbImZldGNoVHdpdHRlclBvc3RzIiwiaGFzaHRhZyIsIlRXSVRURVJfVVJMIiwiaGVhZGVycyIsImF1dGhvcml6YXRpb24iLCJmZXRjaFBvc3RzIiwiZmV0Y2giLCJqc29uIiwicG9zdHMiLCJmZXRjaFR3aXR0ZXJTY3JlZW5TaG90IiwidHdlZXRJZCIsImZldGNoU2NyZWVuc2hvdHMiLCJtZXRob2QiLCJib2R5IiwiSlNPTiIsInN0cmluZ2lmeSIsInNjcmVlbnNob3RzIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./services/fetchTwitterPosts.tsx\n");
+
+/***/ }),
+
+/***/ "react/jsx-dev-runtime":
+/*!****************************************!*\
+  !*** external "react/jsx-dev-runtime" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("react/jsx-dev-runtime");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = (__webpack_exec__("./pages/index.tsx"));
+module.exports = __webpack_exports__;
+
+})();
