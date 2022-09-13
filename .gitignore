@@ -1,5 +1,10 @@
 node_modules
-/.next/*
+
 .env.*
 .env.local
+
+
+# next.js
+/.next/
+/out/
 /.next/cache
