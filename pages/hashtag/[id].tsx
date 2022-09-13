@@ -3,11 +3,11 @@ import Head from "next/head"
 import Header from "../../components/Header"
 import Main from "../../components/Main"
 import { MintPosts } from "../../components/Posts"
-import { fetchTwitterPosts } from "../../services/fetchTwitterPosts"
+import { fetchTwitterPosts, fetchTwitterScreenShot } from "../../services/fetchTwitterPosts"
 
 function SearchPage({ media, posts, id, users }: any): JSX.Element {
-  console.log("media", media)
-  console.log("posts", posts)
+
+ 
 
   const tweets = posts.filter((post: any) => {
     return post.attachments?.media_keys?.length > 0
@@ -35,7 +35,7 @@ function SearchPage({ media, posts, id, users }: any): JSX.Element {
         <h1 className='text-white bg-black p-3 text-3xl text-center  w-auto'>
           #{id}
         </h1>
-        <MintPosts posts={posts} users={users} />
+        <MintPosts posts={posts} media={media} users={users} />
       </main>
     </>
   )
@@ -47,12 +47,19 @@ export const getServerSideProps = async ({
   const { id } = query
   const { posts } = await fetchTwitterPosts(id as string, "hashtag")
 
-  console.log(query, "query")
+
+  
+  const tweets = posts.data.filter((post: any) => {
+    return post.attachments?.media_keys?.length > 0
+  })
+
+
+ 
 
   return {
     props: {
       media: posts.includes.media,
-      posts: posts.data,
+      posts: tweets,
       id: id,
       users: posts.includes.users,
     },
