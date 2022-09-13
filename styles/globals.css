@@ -22,7 +22,31 @@ body{
     background:rgb(32 157 242 / 76%) }
 
 .w-60{
-    width:60%;
-    min-width:900px;
+    width: 72%;
+    min-width: 600px;
     margin: 0 auto;
+    padding: 0px 10px;
+}
+.main-section { position: relative; overflow:hidden; height:100vh}
+.main-section video{ position: absolute;
+    top: 0px;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;}
+.main-section > div { position:relative; z-index: 999;}
+.inputBox{
+    background-color: #e8e7e7;
+    border:solid #ccc 1px;
+    height:60px;
+    width:400px;
+    border-radius:15px;
+
+}
+
+.inputBox input {
+    padding:5px;
+
+    font-size:20px;
+    padding-left:40px
 }
