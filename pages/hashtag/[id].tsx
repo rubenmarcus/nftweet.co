@@ -1,3 +1,4 @@
+import { getCookie, hasCookie } from "cookies-next"
 import { GetServerSidePropsContext } from "next"
 import Head from "next/head"
 import Header from "../../components/Header"
@@ -5,9 +6,9 @@ import Main from "../../components/Main"
 import { MintPosts } from "../../components/Posts"
 import { fetchTwitterPosts, fetchTwitterScreenShot } from "../../services/fetchTwitterPosts"
 
-function SearchPage({ media, posts, id, users }: any): JSX.Element {
+function SearchPage({ media, posts, id, users, pagToken }: any): JSX.Element {
 
- 
+  console.log(pagToken, 'pagToken')
 
   const tweets = posts.filter((post: any) => {
     return post.attachments?.media_keys?.length > 0
@@ -35,7 +36,7 @@ function SearchPage({ media, posts, id, users }: any): JSX.Element {
         <h1 className='text-white bg-black p-3 text-3xl text-center  w-auto'>
           #{id}
         </h1>
-        <MintPosts posts={posts} media={media} users={users} />
+        <MintPosts hashtag={id} posts={posts} media={media} users={users} token={pagToken} />
       </main>
     </>
   )
@@ -43,27 +44,58 @@ function SearchPage({ media, posts, id, users }: any): JSX.Element {
 
 export const getServerSideProps = async ({
   query,
+  req,
+  res
 }: GetServerSidePropsContext) => {
   const { id } = query
-  const { posts } = await fetchTwitterPosts(id as string, "hashtag")
 
-
-  
-  const tweets = posts.data.filter((post: any) => {
-    return post.attachments?.media_keys?.length > 0
-  })
-
-
+  const cookie = hasCookie('pagToken', {req,res});
+  if(cookie) {
  
+    const token = getCookie('pagToken', {req,res})
 
-  return {
-    props: {
-      media: posts.includes.media,
-      posts: tweets,
-      id: id,
-      users: posts.includes.users,
-    },
+    console.log( 'token', token)
+    const { posts, pagToken } = await fetchTwitterPosts(id as string, token as string)
+    const tweets = posts?.data?.filter((post: any) => {
+      return post.attachments?.media_keys?.length > 0
+    })
+  
+  
+   
+  
+    return {
+      props: {
+        media: posts?.includes?.media,
+        posts: tweets,
+        id: id,
+        users: posts?.includes?.users,
+        pagToken: pagToken
+      },
+    }
+
+  } else {
+    const { posts, pagToken } = await fetchTwitterPosts(id as string)
+    const tweets = posts?.data?.filter((post: any) => {
+      return post.attachments?.media_keys?.length > 0
+    })
+  
+  
+   
+  
+    return {
+      props: {
+        media: posts?.includes?.media,
+        posts: tweets,
+        id: id,
+        users: posts?.includes?.users,
+        pagToken: pagToken
+      },
+    }
+
   }
+  console.log('cookie', cookie)
+  
+ 
 }
 
 export default SearchPage
