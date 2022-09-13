@@ -1,48 +1,61 @@
 import { MbButton } from "mintbase-ui"
 import Link from "next/link"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import {
   fetchTwitterPosts,
 } from "../services/fetchTwitterPosts"
 import { setCookie,  } from 'cookies-next';
 import { useRouter } from "next/router";
+import { PostsContext } from "../context/posts.context";
 
 
-export const MintPosts = ({ posts, users, media, token, hashtag }: any) => {
+export const MintPosts = ({ posts, users, media}: any) => {
   const [mintId, setMintId] = useState("")
 
-  console.log(token, "token")
+
   const router = useRouter();
   const handleMintId = (id: string, tweetId: string) => {
     setMintId(`${tweetId}-${id}`)
   }
 
-  const setNewPagination = async () => {
-    console.log("here")
+  let postsData = useContext(PostsContext);
 
-    setCookie('pagToken', token);
-    router.replace(router.asPath);
+
+  if(postsData.data.length > 0) {
+    const newPosts = [...postsData.data, ...posts]
+
+    // setTweets(newPosts)
+    console.log('newPosts', newPosts)
   }
+
+
+
+//   console.log( 'users', users)
+
+
 
   return (
     <>
       <section className='flex flex-wrap	  justify-center'>
-        {posts.map((post, i) => {
+        {posts ? posts.map((post:any , i:number) => {
           let tweetId = posts[i]?.id
-
+            console.log(post , 'post')
           // const images = post?.attachments?.media_keys.length > 0 ? post?.attachments?.media_keys: ''
           let image = { url: "", preview_image_url: "" }
 
           let images = []
 
+          const username = users.find((user:any) => user.id === post.author_id)
+          console.log(username , 'username')
+
           if (post?.attachments?.media_keys.length === 1) {
             image = media.find(
-              (file) => file.media_key === post?.attachments?.media_keys[0]
+              (file:any ) => file.media_key === post?.attachments?.media_keys[0]
             )
           }
 
           if (post?.attachments?.media_keys.length > 1) {
-            images = media.filter((file) =>
+            images = media.filter((file:any ) =>
               post?.attachments?.media_keys.includes(file.media_key)
             )
           }
@@ -59,7 +72,7 @@ export const MintPosts = ({ posts, users, media, token, hashtag }: any) => {
                     <p className='w-full'>
                       Please select one of the images to mint:
                     </p>
-                    {images.map((image) => {
+                    {images.map((image: any) => {
                       return (
                         <div
                           className='cursor-pointer  w-5/12'
@@ -73,18 +86,17 @@ export const MintPosts = ({ posts, users, media, token, hashtag }: any) => {
                 ) : null}
                 {image?.url || image?.preview_image_url ? (
                   <div className='flex w-7/12'>
-                    {" "}
                     <img src={image.url ?? image.preview_image_url} />{" "}
                   </div>
                 ) : null}
                 <p className='w-full'>{posts[i].text}</p>
-                <p>
+                <a href={`https://twitter.com/${username.username}`} target="_blank">
                   <img
-                    src={users[i]?.profile_image_url}
+                    src={username.profile_image_url}
                     className='rounded-full	'
-                  />{" "}
-                  {users[i]?.name}
-                </p>
+                  />
+                  {username.name}
+                </a>
               </div>
               <div className='w-2/12'>
                 <Link
@@ -108,9 +120,8 @@ export const MintPosts = ({ posts, users, media, token, hashtag }: any) => {
               </div>
             </div>
           )
-        })}
+        }) : null}
       </section>
-      <MbButton label='NEXT TWEETS' onClick={setNewPagination} />
     </>
   )
 }

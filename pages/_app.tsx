@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { WalletProvider } from '../services/providers/WalletProvider';
 import { getClient } from '../services/providers/apollo';
+import { PostsContextProvider } from '../context/posts.context';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const mjsKey = process.env.NEXT_PUBLIC_DEVELOPER_KEY || '';
@@ -19,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       apiKey={mjsKey}
     >
       <ApolloProvider client={getClient({ network: Network.testnet })}>
-        <Component {...pageProps} />
+        <PostsContextProvider><Component {...pageProps} /></PostsContextProvider>
       </ApolloProvider>
     </WalletProvider>
   );
