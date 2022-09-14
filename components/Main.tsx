@@ -44,9 +44,11 @@ function Main() {
 
     try {
       const file = getValues(EInputType.MAIN_IMAGE);
+
+
       const { data: fileUploadResult, error: fileError } = await wallet.minter.uploadField(MetadataField.Media, file);
 
-      console.log('data', fileUploadResult);
+
 
       if (fileError) {
         throw new Error(fileError);
@@ -61,7 +63,7 @@ function Main() {
       if (file) {
         const { data: fileUploadResult, error: fileError } = await wallet.minter.uploadField(MetadataField.Animation_url, file);
 
-        console.log('data', fileUploadResult);
+    
 
         if (fileError) {
           throw new Error(fileError);
@@ -78,7 +80,7 @@ function Main() {
       if (file) {
         const { data: fileUploadResult, error: fileError } = await wallet.minter.uploadField(MetadataField.Document, file);
 
-        console.log('data', fileUploadResult);
+   
 
         if (fileError) {
           throw new Error(fileError);
@@ -123,26 +125,26 @@ function Main() {
       return;
     }
 
-    await wallet.mint(
-      Number(mintAmount),
-      store.toString(),
-      !royalties ? undefined : royalties.royaltyArgs,
-      !splits ? undefined : splits,
-      category,
-      {
-        callbackUrl: `${window.location.origin}/success`,
-        meta: JSON.stringify({
-          type: 'mint',
-          args: {
-            contractAddress: store.toString(),
-            amount: Number(mintAmount),
-            thingId: `${metadataId}:${store.toString()}`,
-          },
-        }),
-        royaltyPercentage: royalties?.percentage || 0,
-        metadataId,
-      },
-    );
+    // await wallet.mint(
+    //   Number(mintAmount),
+    //   store.toString(),
+    //   !royalties ? undefined : royalties.royaltyArgs,
+    //   !splits ? undefined : splits,
+    //   category,
+    //   {
+    //     callbackUrl: `${window.location.origin}/success`,
+    //     meta: JSON.stringify({
+    //       type: 'mint',
+    //       args: {
+    //         contractAddress: store.toString(),
+    //         amount: Number(mintAmount),
+    //         thingId: `${metadataId}:${store.toString()}`,
+    //       },
+    //     }),
+    //     royaltyPercentage: royalties?.percentage || 0,
+    //     metadataId,
+    //   },
+    // );
     setIsMinting(false);
   };
 

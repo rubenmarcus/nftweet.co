@@ -56,3 +56,9 @@ button[disabled] {
     color: #b2b2b2!important;
     cursor: not-allowed;
 }
+img{ max-width:400px;}
+button{transform:scale(2); height:50px; font-weight: bold; padding:20px!important; display:flex; justify-content: center; align-items: center;}
+
+.postCard{transform: scale(0.98);}
+.postCard:hover{   transform: scale(1);
+    transition: transform 0.2s ease-in-out;}
