@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.head-font{
+    font-family: 'Archivo Black', sans-serif;
+}
+
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    font-weight:600;
+}
+
+
+.color-tweet{
+    color: rgb(29, 155, 240)
+}
+
+
+.bg-tweet{
+    background:rgb(32 157 242 / 76%) }
+
+.w-60{
+    width: 72%;
+    min-width: 600px;
+    margin: 0 auto;
+    padding: 0px 10px;
+}
+.main-section { position: relative; overflow:hidden; height:100vh}
+.main-section video{ position: absolute;
+    top: 0px;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;}
+.main-section > div { position:relative; z-index: 999;}
+.inputBox{
+    background-color: #e8e7e7;
+    border:solid #ccc 1px;
+    height:60px;
+    width:400px;
+    border-radius:15px;
+
+}
+
+.inputBox input {
+    padding:5px;
+
+    font-size:20px;
+    padding-left:40px
+}
+
+button[disabled] {
+    background: #cecdcd!important;
+    color: #b2b2b2!important;
+    cursor: not-allowed;
+}
