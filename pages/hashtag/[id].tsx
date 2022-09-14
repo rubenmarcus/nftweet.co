@@ -4,22 +4,10 @@ import Head from "next/head"
 import Header from "../../components/Header"
 import Main from "../../components/Main"
 import { MintPosts } from "../../components/Posts"
-import { PostsContextProvider } from "../../context/posts.context"
 import { fetchTwitterPosts } from "../../services/fetchTwitterPosts"
 
 function SearchPage({ media, posts, id, users }: any): JSX.Element {
-  // console.log(pagToken, 'pagToken')
 
-  // const tweets = posts.filter((post: any) => {
-  //   return post.attachments?.media_keys?.length > 0
-  // })
-
-  // const screenshotTweets = posts.filter(
-  //   (item: any) => !tweets.some((tweet: any) => tweet.id === item.id)
-  // )
-
-  // console.log(tweets, "tweets")
-  // console.log(screenshotTweets, "screenshot Tweets")
 
   return (
     <>

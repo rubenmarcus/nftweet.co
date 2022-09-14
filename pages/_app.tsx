@@ -5,10 +5,9 @@ import type { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { WalletProvider } from '../services/providers/WalletProvider';
 import { getClient } from '../services/providers/apollo';
-import { PostsContextProvider } from '../context/posts.context';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const mjsKey = process.env.NEXT_PUBLIC_DEVELOPER_KEY || '';
+  const mjsKey = process.env.NEXT_PUBLIC_DEVELOPER_KEY || '09174a0a-7b68-4640-a5d5-d548d5dbef6f';
 
   const isValidNetworkKey = Object.values(Network).includes(process.env.NEXT_PUBLIC_NETWORK as Network);
   const networkKey = isValidNetworkKey ? process.env.NEXT_PUBLIC_NETWORK as Network : Network.testnet;
@@ -20,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       apiKey={mjsKey}
     >
       <ApolloProvider client={getClient({ network: Network.testnet })}>
-        <PostsContextProvider><Component {...pageProps} /></PostsContextProvider>
+      <Component {...pageProps} />
       </ApolloProvider>
     </WalletProvider>
   );

@@ -1,41 +1,38 @@
 import { useContext } from "react"
-import { PostsContext } from "../../context/posts.context"
 import { Post } from "../../components/Post"
 import { GetServerSidePropsContext } from "next"
 import { fetchTwitterPost } from "../../services/fetchTwitterPosts"
 import Head from "next/head"
 
- const MintPage = ({post, media, id, username}:any) => {
+const MintPage = ({ post, media, id, username }: any) => {
+  let image = { url: "", preview_image_url: "" }
 
-    // let postsData = useContext(PostsContext)
+  let images = []
 
-    console.log(post, media, id, username, 'posts')
+  if (post?.attachments?.media_keys.length === 1) {
+    image = media.find(
+      (file: any) => file.media_key === post?.attachments?.media_keys[0]
+    )
+  }
 
-    let image = { url: "", preview_image_url: "" }
+  if (post?.attachments?.media_keys.length > 1) {
+    images = media.filter((file: any) =>
+      post?.attachments?.media_keys.includes(file.media_key)
+    )
+  }
 
-    let images = []
+  if (!image && !images) {
+    return null
+  }
 
-   
-    if (post?.attachments?.media_keys.length === 1) {
-      image = media.find(
-        (file: any) => file.media_key === post?.attachments?.media_keys[0]
-      )
-    }
+  const data = { images, image, post, username, tweetId: id }
 
-    if (post?.attachments?.media_keys.length > 1) {
-      images = media.filter((file: any) =>
-        post?.attachments?.media_keys.includes(file.media_key)
-      )
-    }
-
-    if (!image && !images) {
-      return null
-    }
-
-    const data =  { images, image, post, username , tweetId:id } 
-
-    return ( <>  <Head>
-        <title>nftweet - lets Mint : {username.name} : {post?.text}</title>
+  return (
+    <main className='bg-gray-300 h-full w-fulll flex flex-wrap justify-center'>    
+      <Head>
+        <title>
+          nftweet - lets Mint : {username.name} : {post?.text}
+        </title>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
@@ -43,34 +40,28 @@ import Head from "next/head"
           rel='stylesheet'
         />
       </Head>
-      <Post data={data} /> 
-      
-      </>)
-
+      <Post data={data} isMintPage isListPage={false} />
+    </main>
+  )
 }
 
-
 export const getServerSideProps = async ({
-    query,
-    req,
-    res,
-  }: GetServerSidePropsContext) => {
-    const { id } = query
-  
-    const { posts } = await fetchTwitterPost(id as string)
-  
-    return {
-      props: {
-        media: posts?.includes?.media,
-        post: posts.data,
-        id: id,
-        username: posts?.includes?.users[0],
-      },
-    }
+  query,
+  req,
+  res,
+}: GetServerSidePropsContext) => {
+  const { id } = query
+
+  const { posts } = await fetchTwitterPost(id as string)
+
+  return {
+    props: {
+      media: posts?.includes?.media ?? "",
+      post: posts?.data ?? "",
+      id: id,
+      username: posts?.includes?.users[0] ?? "",
+    },
   }
-  
+}
 
-  
-
-
-export default MintPage;
+export default MintPage
