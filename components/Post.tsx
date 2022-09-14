@@ -19,10 +19,14 @@ export const Post = ({
 
   const [mintId, setMintId] = useState("")
 
-  const handleMintId = (id: string, tweetId: string) => {
-    setMintId(`${tweetId}-${id}`)
-  }
+//   const handleMintId = (id: string, tweetId: string) => {
+//     setMintId(`${tweetId}-${id}`)
+//   }
   const imagesUrl = images[0]?.url ?? images[0]?.preview_image_url;
+  
+  console.log(image.url, images, imagesUrl, 'image')
+
+
   const mintIt = async () => {
     const metadata = {
       title: `${username.username}-${tweetId}`,
@@ -30,7 +34,7 @@ export const Post = ({
       store: "nftweet.mintspace2.testnet",
       type: "NEP171",
       category: "photo",
-      media: images? imagesUrl : image.url,
+      media: images[0]? imagesUrl : image.url,
     }
 
     await MinterService(wallet, metadata)
@@ -40,14 +44,14 @@ export const Post = ({
 
   return data ? (
     <div className='flex flex-wrap p-10 bg-white w-10/12 mt-10 postCard rounded-xl'>
-      <div className='w-4/12'>
+      <div className='lg:w-4/12 sm:w-full  sm:justify-center sm:align-center sm:items-center sm:mb-10'>
         {images?.length > 1 ? (
-          <div className='flex flex-wrap w-7/12'>
+          <div className='flex flex-wrap sm:place-items-center sm:w-full lg:w-7/12'>
             {/* {isMintPage ? (
               <p className='w-full'>Please select one of the images to mint:</p>
             ) : null} */}
 
-            {images? ( <div className='flex w-7/12'>
+            {images? ( <div className='flex sm:w-full sm:justify-center sm:align-center sm:items-center lg:w-7/12'>
             <img src={images[0].url ?? images[0].preview_image_url} />
           </div>): null}
             {/* {images?.map((image: any) => {
@@ -67,12 +71,12 @@ export const Post = ({
           </div>
         ) : null}
         {image?.url || image?.preview_image_url ? (
-          <div className='flex w-7/12'>
+          <div className='flex  sm:justify-center sm:align-center sm:items-center   sm:w-full  lg:w-7/12'>
             <img src={image.url ?? image.preview_image_url} />
           </div>
         ) : null}
   </div>
-        <div className="w-5/12 px-20">
+        <div className="lg:w-5/12  sm:w-full  px-20">
         <p className='w-full'>{post?.text}</p>
 
    
@@ -82,7 +86,7 @@ export const Post = ({
         </a>
       </div>
     
-      <div className='w-2/12 justify-center align-center items-center flex'>
+      <div className='lg:w-2/12 sm:mt-20 sm:w-full justify-center align-center items-center flex'>
         {isListPage ? (
           <Link
             href={!mintId ? `/mint/${tweetId}` : `/mint/${mintId}`}

@@ -1,12 +1,38 @@
 import { MbButton } from "mintbase-ui"
+import Link from "next/link"
+import { useState } from "react"
 import { useWallet } from "../services/providers/WalletProvider"
 
 function Header() {
-  const { isConnected, details, signIn, signOut } = useWallet()
+  const [placeholder, setPlaceholder] = useState("search by hashtag")
+  const [searchQuery, setQuery] = useState("")
+  const [opt, setOpt] = useState("hashtag")
 
-  const buttonLabel = isConnected
-    ? `Sign Out ${details.accountId}`
-    : " Connect NEAR Wallet"
+  const handleVal = (e: any) => {
+    console.log(searchQuery, "searchQuery")
+    setQuery(e.target.value)
+  }
+
+  const changePlaceHolder = (e: any) => {
+    let name = ""
+
+    if (e.target.value === "hashtag") {
+      name = "search by #"
+      setOpt("hashtag")
+    }
+
+    if (e.target.value === "username") {
+      name = "search by username"
+      setOpt("user")
+    }
+
+    if (e.target.value === "tweet") {
+      name = "type tweet id"
+      setOpt("mint")
+    }
+    setPlaceholder(name)
+  }
+
   const videos = ["video1.mp4", "video2.mp4", "video3.mp4", "video4.mp4"]
   const video = videos[Math.floor(Math.random() * videos.length)]
 
@@ -38,8 +64,8 @@ function Header() {
               <li> - mint it</li>
             </ul>
 
-            <div className='flex inputBox'>
-              <select>
+            <div className='flex inputBox home'>
+              <select onChange={(e) => changePlaceHolder(e)}>
                 <option>hashtag</option>
                 <option>username</option>
                 <option>tweet</option>
@@ -47,16 +73,18 @@ function Header() {
               <input
                 type='text'
                 className='inputSearch'
-                placeholder='Search for hashtag'
+                placeholder={placeholder}
+                onChange={(e) => handleVal(e)}
               />
+              <Link href={`${opt}/${searchQuery}`} passHref shallow>
+                <a>
+                  <MbButton label='GO' />
+                </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      {/* <MbButton
-      onClick={isConnected ? signOut : signIn}2
-      label={buttonLabel}
-    /> */}
     </>
   )
 }

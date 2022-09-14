@@ -6,9 +6,12 @@ export const MinterService = async (wallet: Wallet, data: any) => {
 
   const file = await fetchImagetoBlob(data.media)
 
+  console.log(file, data.media, 'file')
+
   try {
     const { data: fileUploadResult, error: fileError } =
       await wallet.minter.uploadField(MetadataField.Media, file as File)
+     
 
     if (fileError) {
       throw new Error(fileError)

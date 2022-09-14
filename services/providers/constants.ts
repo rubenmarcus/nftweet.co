@@ -21,5 +21,5 @@ export const MAINNET_CONFIG = {
 };
 
 export const WalletKeys = {
-  AUTH_KEY: process.env.NEXT_PUBLIC_DEVELOPER_KEY,
+  AUTH_KEY: process.env.NEXT_PUBLIC_DEVELOPER_KEY ||  '09174a0a-7b68-4640-a5d5-d548d5dbef6f',
 };
