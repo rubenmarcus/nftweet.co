@@ -7,8 +7,7 @@ import { MintPosts } from "../../components/Posts"
 import { PostsContextProvider } from "../../context/posts.context"
 import { fetchTwitterPosts } from "../../services/fetchTwitterPosts"
 
-function SearchPage({ media, posts, id, users,  }: any): JSX.Element {
-
+function SearchPage({ media, posts, id, users }: any): JSX.Element {
   // console.log(pagToken, 'pagToken')
 
   // const tweets = posts.filter((post: any) => {
@@ -37,7 +36,7 @@ function SearchPage({ media, posts, id, users,  }: any): JSX.Element {
         <h1 className='text-white bg-black p-3 text-3xl text-center  w-auto'>
           #{id}
         </h1>
-  <MintPosts  hashtag={id} posts={posts} media={media} users={users}  />
+        <MintPosts hashtag={id} posts={posts} media={media} users={users} />
       </main>
     </>
   )
@@ -46,24 +45,11 @@ function SearchPage({ media, posts, id, users,  }: any): JSX.Element {
 export const getServerSideProps = async ({
   query,
   req,
-  res
+  res,
 }: GetServerSidePropsContext) => {
   const { id } = query
 
-
-  
-
-
-const hasToken = hasCookie('pagToken', {res, req})
-
-
-
- if( hasToken) {
-
-  const token = getCookie('pagToken',  {res, req})
-  const { posts } = await fetchTwitterPosts(id as string, )
-
-
+  const { posts } = await fetchTwitterPosts(id as string)
 
   return {
     props: {
@@ -71,14 +57,8 @@ const hasToken = hasCookie('pagToken', {res, req})
       posts: posts.data,
       id: id,
       users: posts?.includes?.users,
-
     },
   }
- 
-
- } 
-
- 
 }
 
 export default SearchPage

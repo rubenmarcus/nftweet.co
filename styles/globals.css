@@ -50,3 +50,9 @@ body{
     font-size:20px;
     padding-left:40px
 }
+
+button[disabled] {
+    background: #cecdcd!important;
+    color: #b2b2b2!important;
+    cursor: not-allowed;
+}

@@ -1,6 +1,6 @@
 
 import { useState, createContext } from 'react'
-const ContextDataMock:any = [];
+const ContextDataMock:any = { };
 
 
 
