@@ -2,63 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-.head-font{
+.head-font {
     font-family: 'Archivo Black', sans-serif;
 }
 
 
-body{
+body {
     font-family: 'Work Sans', sans-serif;
-    font-weight:600;
+    font-weight: 600;
 }
 
 
-.color-tweet{
+.color-tweet {
     color: rgb(29, 155, 240)
 }
 
 
-.bg-tweet{
-    background:rgb(32 157 242 / 76%) }
+.bg-tweet {
+    background: rgb(32 157 242 / 76%)
+}
 
-.w-60{
+.w-60 {
     width: 72%;
     min-width: 600px;
     margin: 0 auto;
     padding: 0px 10px;
 }
-.main-section { position: relative; overflow:hidden; height:100vh}
-.main-section video{ position: absolute;
+
+.main-section {
+    position: relative;
+    overflow: hidden;
+    height: 100vh
+}
+
+.main-section video {
+    position: absolute;
     top: 0px;
     z-index: 9;
     height: 100%;
     width: 100%;
-    object-fit: cover;}
-.main-section > div { position:relative; z-index: 999;}
-.inputBox{
-    background-color: #e8e7e7;
-    border:solid #ccc 1px;
-    height:60px;
-    width:400px;
-    border-radius:15px;
+    object-fit: cover;
+}
 
+.main-section>div {
+    position: relative;
+    z-index: 999;
+}
+
+.inputBox {
+    background-color: #e8e7e7;
+    border: solid #ccc 1px;
+    height: 60px;
+    width: 467px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 37px;
 }
 
 .inputBox input {
-    padding:5px;
-
-    font-size:20px;
-    padding-left:40px
+    padding: 5px;
+    font-size: 20px;
+    padding-left: 40px
 }
 
 button[disabled] {
-    background: #cecdcd!important;
-    color: #b2b2b2!important;
+    background: #cecdcd !important;
+    color: #b2b2b2 !important;
     cursor: not-allowed;
 }
-img{ max-width:400px;}
-button{transform:scale(2); height:50px; font-weight: bold; padding:20px!important; display:flex; justify-content: center; align-items: center;}
 
-.postCard{transform: scale(0.98);}
-.postCard:hover{   transform: scale(1);
-    transition: transform 0.2s ease-in-out;}
+img {
+    max-width: 400px;
+}
+
+
+button {
+    transform: scale(2);
+    height: 50px;
+    font-weight: bold;
+    padding: 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home button{
+    transform: scale(1)!important;
+    height: 60px!important;
+}
+select {
+    text-align: center;
+    background: #f4f4f4;
+    border-right: 1px solid #ccc;
+    padding-right: 1px;
+    font-size: 16px;
+}
+
+.postCard {
+    transform: scale(0.98);
+}
+
+.postCard:hover {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+input,
+select {
+    outline: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 959px) {
+    .w-60 {
+        max-width: 90%!important;
+    }
+    .w-60 ul {
+        max-width: 60%;
+        font-size: 16px;
+    }
+    .w-60 > div {
+        max-width: 63%;
+    }
+    .w-60 > div > div {
+        font-size: 27px;
+        line-height: 3rem;
+    }
+  }

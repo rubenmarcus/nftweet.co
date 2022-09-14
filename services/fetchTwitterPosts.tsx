@@ -30,3 +30,22 @@ export const fetchTwitterPost = async (id: string) => {
 
     return { posts: res,}
   }
+
+  export const fetchTwitterUserPosts = async (id: string) => {
+    const TWITTER_URL = `https://api.twitter.com/2/tweets/search/recent?query=from%3A${id}(has%3Amedia%20-is%3Aretweet)&tweet.fields=created_at&user.fields=username,url,profile_image_url&expansions=attachments.media_keys,author_id&media.fields=preview_image_url,url`
+  
+    const headers = {
+      authorization:
+      AUTH,
+    }
+  
+    const fetchPosts = await fetch(TWITTER_URL, { headers })
+
+    console.log(
+        'res', fetchPosts
+    )
+  
+    const res = await fetchPosts.json()
+
+    return { posts: res,}
+  }
